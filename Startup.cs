@@ -31,7 +31,7 @@ namespace UtmShop
         {
             services.AddDbContext<ShopDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("scs")));
             services.AddControllers();
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Startup>());
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
